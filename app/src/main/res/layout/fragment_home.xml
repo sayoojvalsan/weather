@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hive.weatherapi.home.view.CurrentWeatherFragment"
+    tools:showIn="@layout/activity_home">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_below="@id/place_autocomplete_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@android:color/holo_orange_dark"
+        >
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+        <TextView
+            android:padding="16dp"
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:id="@+id/text_view_city"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            tools:text="New York"/>
+
+
+        <TextView
+            android:paddingLeft="16dp"
+            android:layout_below="@id/text_view_city"
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:id="@+id/text_view_weather_text"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="cloudy"/>
+
+
+            <TextView
+                android:id="@+id/cloud_icon"
+                android:paddingLeft="16dp"
+                android:layout_below="@id/text_view_weather_text"
+                android:textSize="100sp"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                tools:text="90"
+                android:gravity="center_vertical"
+                style="@style/Base.TextAppearance.AppCompat.Display4"
+                android:textColor="@android:color/white"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:paddingRight="16dp"
+                android:textSize="50sp"
+                android:id="@+id/current_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+            <TextView
+                android:id="@+id/tv_max_min"
+                android:textSize="12sp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                tools:text="90 | 90"
+                android:textColor="@android:color/white"
+                android:paddingRight="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+
+            />
+
+
+
+            <TextView
+                android:layout_above="@id/tv_max_min"
+                android:textSize="12sp"
+                android:text="Units : F"
+                android:textColor="@android:color/white"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"/>
+
+
+            <TextView
+                android:textSize="30dp"
+                android:id="@+id/empty_view"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:text="Nothing to show"
+                android:layout_gravity="center"
+                android:layout_width="match_parent" android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
