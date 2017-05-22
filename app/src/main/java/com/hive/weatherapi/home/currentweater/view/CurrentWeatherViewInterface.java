@@ -1,6 +1,6 @@
-package com.hive.weatherapi.home.view;
+package com.hive.weatherapi.home.currentweater.view;
 
-import com.hive.weatherapi.home.model.CurrentWeather;
+import com.hive.weatherapi.home.currentweater.model.CurrentWeather;
 
 /**
  * Created by hive on 5/20/17.

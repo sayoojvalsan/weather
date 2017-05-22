@@ -1,4 +1,4 @@
-package com.hive.weatherapi.home.model;
+package com.hive.weatherapi.home.currentweater.model;
 
 import com.hive.weatherapi.home.interfaces.OnCompleted;
 
@@ -23,5 +23,10 @@ public class CurrentWeatherService implements CurrentWeatherServiceInterface{
     public void getCurrentWeatherByCity(String city, OnCompleted<CurrentWeather> currentWeatherOnCompleteListener) {
 
         mWeatherStrategyInterface.getCurrentWeatherByCity(city, currentWeatherOnCompleteListener);
+    }
+
+    @Override
+    public void getCurrentWeatherByLatLng(double lat, double lng, OnCompleted<CurrentWeather> currentWeatherOnCompleteListener) {
+        mWeatherStrategyInterface.getCurrentWeatherByLatLong(lat, lng, currentWeatherOnCompleteListener);
     }
 }

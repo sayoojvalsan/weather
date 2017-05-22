@@ -1,12 +1,11 @@
-package com.hive.weatherapi.home.presenter;
+package com.hive.weatherapi.home.currentweater.presenter;
 
 import android.util.Log;
 
 import com.hive.weatherapi.home.interfaces.OnCompleted;
-import com.hive.weatherapi.home.model.CurrentWeather;
-import com.hive.weatherapi.home.model.CurrentWeatherServiceInterface;
-import com.hive.weatherapi.home.view.CurrentWeatherViewInterface;
-
+import com.hive.weatherapi.home.currentweater.model.CurrentWeather;
+import com.hive.weatherapi.home.currentweater.model.CurrentWeatherServiceInterface;
+import com.hive.weatherapi.home.currentweater.view.CurrentWeatherViewInterface;
 import java.lang.ref.WeakReference;
 
 /**
@@ -28,14 +27,15 @@ public class CurrentWeatherPresenter implements  CurrentWeatherPresenterInterfac
     }
 
     @Override
-    public void getCurrentWeather(String input) {
-            Log.d(TAG, "Presenter fetching current weather for " + input);
-            getWeatherByCity(input);
+    public void getCurrentWeather(final String city) {
+            Log.d(TAG, "Presenter fetching current weather for " + city);
+            getWeatherByCity(city);
 
     }
 
-    private void getWeatherByCity(String input) {
-        mCurrentWeatherServiceInterface.getCurrentWeatherByCity(input, new OnCompleted<CurrentWeather>() {
+    @Override
+    public void getCurrentWeather(final double latitude, final  double longitude) {
+        mCurrentWeatherServiceInterface.getCurrentWeatherByLatLng(latitude, longitude, new OnCompleted<CurrentWeather>() {
             @Override
             public void onComplete(CurrentWeather currentWeather, Throwable throwable) {
 
@@ -47,6 +47,23 @@ public class CurrentWeatherPresenter implements  CurrentWeatherPresenterInterfac
             }
         });
     }
+
+    private void getWeatherByCity(final String city) {
+        mCurrentWeatherServiceInterface.getCurrentWeatherByCity(city, new OnCompleted<CurrentWeather>() {
+            @Override
+            public void onComplete(CurrentWeather currentWeather, Throwable throwable) {
+
+                //Save the last known city
+
+                //Check weak reference for validity
+                CurrentWeatherViewInterface currentWeatherViewInterface = mCurrentWeatherViewInterface.get();
+                if(currentWeatherViewInterface != null) {
+                    currentWeatherViewInterface.setCurrentWeather(currentWeather);
+                }
+            }
+        });
+    }
+
 
 
 }

@@ -1,10 +1,10 @@
-package com.hive.weatherapi.home.model.openweathermap;
+package com.hive.weatherapi.home.currentweater.model.openweathermap;
 
 import android.util.Log;
 
 import com.hive.weatherapi.home.interfaces.OnCompleted;
-import com.hive.weatherapi.home.model.CurrentWeather;
-import com.hive.weatherapi.home.model.WeatherStrategyInterface;
+import com.hive.weatherapi.home.currentweater.model.CurrentWeather;
+import com.hive.weatherapi.home.currentweater.model.WeatherStrategyInterface;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -79,6 +79,41 @@ public class OpenWeatherMapStrategy implements WeatherStrategyInterface {
 
     }
 
+    @Override
+    public void getCurrentWeatherByLatLong(double lat, double lon, final OnCompleted<CurrentWeather> onCompleted) {
+        Observable<OpenWeatherMapData> weatherMapDataObservable = mOpenWeatherMapRetroFitService.getCurrentWeatherData(String.valueOf(lat), String.valueOf(lon), APP_ID, UNIT);
+
+        weatherMapDataObservable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<OpenWeatherMapData>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d(TAG, "onCompleted");
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG, "onError " + e.getLocalizedMessage());
+
+                        onCompleted.onComplete(null, e);
+
+                    }
+
+                    @Override
+                    public void onNext(OpenWeatherMapData openWeatherMapData) {
+                        Log.d("Current Weather", openWeatherMapData.getWeather()
+                                .get(0)
+                                .getDescription());
+
+
+                        CurrentWeather weather = convertToViewData(openWeatherMapData);
+                        onCompleted.onComplete(weather, null);
+
+                    }
+                });
+    }
+
 
     public CurrentWeather convertToViewData(OpenWeatherMapData openWeatherMapData){
 
@@ -103,6 +138,9 @@ public class OpenWeatherMapStrategy implements WeatherStrategyInterface {
     public interface OpenWeatherMapRetroFitService {
         @GET("weather")
         Observable<OpenWeatherMapData> getCurrentWeatherData(@Query("q") String sort, @Query("appid") String appid, @Query("units") String unit);
+        @GET("weather")
+        Observable<OpenWeatherMapData> getCurrentWeatherData(@Query("lat") String lat, @Query("lon") String lon, @Query("appid") String appid, @Query("units") String unit);
+
     }
 
 

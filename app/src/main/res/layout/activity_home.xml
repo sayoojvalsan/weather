@@ -18,7 +18,7 @@
     <fragment android:id="@+id/current_weather_fragment"
 
               android:layout_below="@id/place_autocomplete_fragment"
-              android:name="com.hive.weatherapi.home.view.CurrentWeatherFragment"
+              android:name="com.hive.weatherapi.home.currentweater.view.CurrentWeatherFragment"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               tools:layout="@layout/fragment_home"/>

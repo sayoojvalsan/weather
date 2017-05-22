@@ -1,4 +1,4 @@
-package com.hive.weatherapi.home.model;
+package com.hive.weatherapi.home.currentweater.model;
 
 /**
  * Created by hive on 5/20/17.
