@@ -25,12 +25,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    //Retrofit
-    
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 
-    //RxAndroid
-
-
+    dependencies { testCompile "org.mockito:mockito-core:2.0.57-beta" }
 
 
     compile 'com.google.android.gms:play-services-places:10.2.6'

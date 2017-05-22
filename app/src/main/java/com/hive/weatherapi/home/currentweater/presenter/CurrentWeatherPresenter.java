@@ -12,7 +12,8 @@ import java.lang.ref.WeakReference;
  * Created by hive on 5/20/17.
  */
 
-public class CurrentWeatherPresenter implements  CurrentWeatherPresenterInterface{
+
+public class CurrentWeatherPresenter implements  CurrentWeatherPresenterInterface, OnCompleted<CurrentWeather> {
 
     private String TAG = CurrentWeatherPresenter.class.getSimpleName();
     private  WeakReference<CurrentWeatherViewInterface> mCurrentWeatherViewInterface; //Using weak reference to avoid Mem leaks. View can be detached anytime.
@@ -28,42 +29,26 @@ public class CurrentWeatherPresenter implements  CurrentWeatherPresenterInterfac
 
     @Override
     public void getCurrentWeather(final String city) {
-            Log.d(TAG, "Presenter fetching current weather for " + city);
             getWeatherByCity(city);
 
     }
 
     @Override
     public void getCurrentWeather(final double latitude, final  double longitude) {
-        mCurrentWeatherServiceInterface.getCurrentWeatherByLatLng(latitude, longitude, new OnCompleted<CurrentWeather>() {
-            @Override
-            public void onComplete(CurrentWeather currentWeather, Throwable throwable) {
-
-                //Check weak reference for validity
-                CurrentWeatherViewInterface currentWeatherViewInterface = mCurrentWeatherViewInterface.get();
-                if(currentWeatherViewInterface != null) {
-                    currentWeatherViewInterface.setCurrentWeather(currentWeather);
-                }
-            }
-        });
+        mCurrentWeatherServiceInterface.getCurrentWeatherByLatLng(latitude, longitude, this);
     }
 
     private void getWeatherByCity(final String city) {
-        mCurrentWeatherServiceInterface.getCurrentWeatherByCity(city, new OnCompleted<CurrentWeather>() {
-            @Override
-            public void onComplete(CurrentWeather currentWeather, Throwable throwable) {
-
-                //Save the last known city
-
-                //Check weak reference for validity
-                CurrentWeatherViewInterface currentWeatherViewInterface = mCurrentWeatherViewInterface.get();
-                if(currentWeatherViewInterface != null) {
-                    currentWeatherViewInterface.setCurrentWeather(currentWeather);
-                }
-            }
-        });
+        mCurrentWeatherServiceInterface.getCurrentWeatherByCity(city, this);
     }
 
 
-
+    @Override
+    public void onComplete(CurrentWeather currentWeather, Throwable throwable) {
+        //Check weak reference for validity
+        CurrentWeatherViewInterface currentWeatherViewInterface = mCurrentWeatherViewInterface.get();
+        if(currentWeatherViewInterface != null) {
+            currentWeatherViewInterface.setCurrentWeather(currentWeather);
+        }
+    }
 }
