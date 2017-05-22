@@ -1,11 +1,9 @@
-package com.hive.weatherapi.home.currentweater.presenter;
-
-import android.util.Log;
+package com.hive.weatherapi.home.currentweather.presenter;
 
 import com.hive.weatherapi.home.interfaces.OnCompleted;
-import com.hive.weatherapi.home.currentweater.model.CurrentWeather;
-import com.hive.weatherapi.home.currentweater.model.CurrentWeatherServiceInterface;
-import com.hive.weatherapi.home.currentweater.view.CurrentWeatherViewInterface;
+import com.hive.weatherapi.home.currentweather.model.CurrentWeather;
+import com.hive.weatherapi.home.currentweather.model.CurrentWeatherServiceInterface;
+import com.hive.weatherapi.home.currentweather.view.CurrentWeatherViewInterface;
 import java.lang.ref.WeakReference;
 
 /**

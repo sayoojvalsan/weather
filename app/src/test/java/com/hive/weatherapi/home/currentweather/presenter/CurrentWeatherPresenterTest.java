@@ -1,8 +1,8 @@
-package com.hive.weatherapi.home.currentweater.presenter;
+package com.hive.weatherapi.home.currentweather.presenter;
 
-import com.hive.weatherapi.home.currentweater.model.CurrentWeather;
-import com.hive.weatherapi.home.currentweater.model.CurrentWeatherServiceInterface;
-import com.hive.weatherapi.home.currentweater.view.CurrentWeatherViewInterface;
+import com.hive.weatherapi.home.currentweather.model.CurrentWeather;
+import com.hive.weatherapi.home.currentweather.model.CurrentWeatherServiceInterface;
+import com.hive.weatherapi.home.currentweather.view.CurrentWeatherViewInterface;
 import com.hive.weatherapi.home.interfaces.OnCompleted;
 
 import org.junit.Before;

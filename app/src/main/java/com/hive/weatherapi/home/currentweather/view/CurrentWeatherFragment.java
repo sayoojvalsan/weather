@@ -1,6 +1,5 @@
-package com.hive.weatherapi.home.currentweater.view;
+package com.hive.weatherapi.home.currentweather.view;
 
-import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,11 +12,11 @@ import android.widget.TextView;
 
 import com.hive.weatherapi.R;
 import com.hive.weatherapi.home.WeatherApplication;
-import com.hive.weatherapi.home.currentweater.model.CurrentWeather;
-import com.hive.weatherapi.home.currentweater.model.CurrentWeatherService;
-import com.hive.weatherapi.home.currentweater.model.CurrentWeatherServiceInterface;
-import com.hive.weatherapi.home.currentweater.model.openweathermap.OpenWeatherMapStrategy;
-import com.hive.weatherapi.home.currentweater.presenter.CurrentWeatherPresenter;
+import com.hive.weatherapi.home.currentweather.model.CurrentWeather;
+import com.hive.weatherapi.home.currentweather.model.CurrentWeatherService;
+import com.hive.weatherapi.home.currentweather.model.CurrentWeatherServiceInterface;
+import com.hive.weatherapi.home.currentweather.model.openweathermap.OpenWeatherMapStrategy;
+import com.hive.weatherapi.home.currentweather.presenter.CurrentWeatherPresenter;
 import com.hive.weatherapi.home.helper.LocationHelper;
 import com.hive.weatherapi.home.utils.Util;
 
@@ -122,23 +121,7 @@ public class CurrentWeatherFragment extends Fragment implements CurrentWeatherVi
     }
 
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-    }
 
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],

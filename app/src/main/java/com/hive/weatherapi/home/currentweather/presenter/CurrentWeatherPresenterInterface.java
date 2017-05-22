@@ -1,4 +1,4 @@
-package com.hive.weatherapi.home.currentweater.presenter;
+package com.hive.weatherapi.home.currentweather.presenter;
 
 /**
  * Created by hive on 5/20/17.

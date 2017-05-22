@@ -1,5 +1,5 @@
 
-package com.hive.weatherapi.home.currentweater.model.openweathermap;
+package com.hive.weatherapi.home.currentweather.model.openweathermap;
 
 
 import com.google.gson.annotations.Expose;

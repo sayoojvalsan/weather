@@ -1,4 +1,4 @@
-package com.hive.weatherapi.home.currentweater.model;
+package com.hive.weatherapi.home.currentweather.model;
 
 import com.hive.weatherapi.home.interfaces.OnCompleted;
 

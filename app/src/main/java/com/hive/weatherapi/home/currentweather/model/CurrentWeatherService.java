@@ -1,9 +1,11 @@
-package com.hive.weatherapi.home.currentweater.model;
+package com.hive.weatherapi.home.currentweather.model;
 
 import com.hive.weatherapi.home.interfaces.OnCompleted;
 
 /**
  * Created by hive on 5/20/17.
+ * Using Strategy pattern which enabled us to use any client in future.
+ *
  */
 
 public class CurrentWeatherService implements CurrentWeatherServiceInterface{

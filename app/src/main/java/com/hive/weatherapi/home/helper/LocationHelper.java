@@ -12,7 +12,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -24,6 +23,9 @@ import com.hive.weatherapi.home.utils.Util;
 
 /**
  * Created by hive on 5/22/17.
+ *
+ * Responsible for resolving Permission issues, Autolocate etc.
+ * The Autolocate will run for few seconds.
  */
 
 public class LocationHelper implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks, LocationListener {

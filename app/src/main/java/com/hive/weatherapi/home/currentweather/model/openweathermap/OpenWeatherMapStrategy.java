@@ -1,10 +1,10 @@
-package com.hive.weatherapi.home.currentweater.model.openweathermap;
+package com.hive.weatherapi.home.currentweather.model.openweathermap;
 
 import android.util.Log;
 
 import com.hive.weatherapi.home.interfaces.OnCompleted;
-import com.hive.weatherapi.home.currentweater.model.CurrentWeather;
-import com.hive.weatherapi.home.currentweater.model.WeatherStrategyInterface;
+import com.hive.weatherapi.home.currentweather.model.CurrentWeather;
+import com.hive.weatherapi.home.currentweather.model.WeatherStrategyInterface;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -17,6 +17,8 @@ import rx.schedulers.Schedulers;
 
 /**
  * Created by hive on 5/20/17.
+ *
+ * Service Strategy for OpenWeatherMap Client
  */
 
 public class OpenWeatherMapStrategy implements WeatherStrategyInterface {

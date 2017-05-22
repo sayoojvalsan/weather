@@ -12,7 +12,7 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.hive.weatherapi.R;
-import com.hive.weatherapi.home.currentweater.view.CurrentWeatherFragment;
+import com.hive.weatherapi.home.currentweather.view.CurrentWeatherFragment;
 
 public class HomeActivity extends AppCompatActivity  {
 
