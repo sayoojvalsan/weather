@@ -19,6 +19,8 @@ import static org.mockito.Mockito.verify;
 
 /**
  * Created by hive on 5/22/17.g
+ *
+ * Testing Presenter {@link CurrentWeatherPresenter}
  */
 @RunWith(MockitoJUnitRunner.class)
 public class CurrentWeatherPresenterTest {
