@@ -100,6 +100,7 @@ public class CurrentWeatherFragment extends Fragment implements CurrentWeatherVi
 
 
         CurrentWeather currentWeather = Util.getCurrentWeatherData(getContext());
+        if(currentWeather == null) return;
         Log.d(TAG, "Got cached weather " + currentWeather.toString());
 
         //update the UI with cached data
