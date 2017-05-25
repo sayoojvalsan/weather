@@ -26,15 +26,13 @@ import static org.mockito.Mockito.verify;
 public class CurrentWeatherPresenterTest {
 
     @Mock
-    CurrentWeatherViewInterface mCurrentWeatherViewInterface;
-
+    private CurrentWeatherViewInterface mCurrentWeatherViewInterface;
 
     @Mock
-    CurrentWeatherServiceInterface mCurrentWeatherServiceInterface;
+    private CurrentWeatherServiceInterface mCurrentWeatherServiceInterface;
 
     private CurrentWeatherPresenter mCurrentWeatherPresenter;
-
-
+    
     @Mock
     OnCompleted mCallBack;
 
