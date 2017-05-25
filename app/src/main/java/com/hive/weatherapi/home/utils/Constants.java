@@ -11,5 +11,6 @@ public class Constants {
     public static String PREF_NAME = "WEATHER_PREF";
 
     public static String PREF_LOCATION_KEY = "LOCATION";
+    public static String PREF_CURRENT_WEATHER_KEY = "CURRENT_WEATHER";
 
 }

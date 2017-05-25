@@ -6,18 +6,22 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.gson.Gson;
 import com.hive.weatherapi.R;
+import com.hive.weatherapi.home.currentweather.model.CurrentWeather;
 
 /**
  * Created by hive on 5/20/17.
  */
 
 public class Util {
+
+    private static final String TAG = Util.class.getSimpleName();
 
     public static void resolveWeatherIcon(TextView weatherTextView, String weatherIcon){
 
@@ -83,6 +87,27 @@ public class Util {
     }
 
 
+    public static  void saveWeatherData(CurrentWeather currentWeather, Context context) {
 
+
+        SharedPreferences pref = Util.getSharedPref(context);
+        Gson gson = new Gson();
+        String json = gson.toJson(currentWeather);
+        pref.edit().putString(Constants.PREF_CURRENT_WEATHER_KEY, json).commit();
+
+        Log.d(TAG, "Current weather saved successfully " + currentWeather.toString());
+
+    }
+
+    public static  CurrentWeather getCurrentWeatherData( Context context) {
+
+
+        SharedPreferences pref = Util.getSharedPref(context);
+        Gson gson = new Gson();
+        String json = pref.getString(Constants.PREF_CURRENT_WEATHER_KEY, null);
+        if (json == null) return null;
+        return gson.fromJson(json, CurrentWeather.class);
+
+    }
 
 }

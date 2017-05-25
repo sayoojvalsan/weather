@@ -255,7 +255,7 @@ public class LocationHelper implements GoogleApiClient.OnConnectionFailedListene
     }
 
 
-    public  void saveLastKnownCity(String city, Context context){
+    public static void saveLastKnownCity(String city, Context context){
 
         if(context == null) return;
 
@@ -264,7 +264,7 @@ public class LocationHelper implements GoogleApiClient.OnConnectionFailedListene
     }
 
 
-    public  String getLastKnownCity( Context context){
+    public static String getLastKnownCity( Context context){
 
         if(context == null) return null;
 

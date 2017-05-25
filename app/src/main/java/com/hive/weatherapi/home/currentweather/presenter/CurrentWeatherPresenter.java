@@ -1,9 +1,16 @@
 package com.hive.weatherapi.home.currentweather.presenter;
 
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import com.google.gson.Gson;
 import com.hive.weatherapi.home.interfaces.OnCompleted;
 import com.hive.weatherapi.home.currentweather.model.CurrentWeather;
 import com.hive.weatherapi.home.currentweather.model.CurrentWeatherServiceInterface;
 import com.hive.weatherapi.home.currentweather.view.CurrentWeatherViewInterface;
+import com.hive.weatherapi.home.utils.Constants;
+import com.hive.weatherapi.home.utils.Util;
+
 import java.lang.ref.WeakReference;
 
 /**
@@ -30,6 +37,10 @@ public class CurrentWeatherPresenter implements  CurrentWeatherPresenterInterfac
             getWeatherByCity(city);
 
     }
+
+
+
+    
 
     @Override
     public void getCurrentWeather(final double latitude, final  double longitude) {

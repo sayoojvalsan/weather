@@ -13,6 +13,7 @@ import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.hive.weatherapi.R;
 import com.hive.weatherapi.home.currentweather.view.CurrentWeatherFragment;
+import com.hive.weatherapi.home.helper.WeatherScheduler;
 
 public class HomeActivity extends AppCompatActivity  {
 
@@ -24,6 +25,7 @@ public class HomeActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        new WeatherScheduler().setRepeatingAlarmEveryHour(getApplicationContext());
 
         //Google places fragment
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)

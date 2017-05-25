@@ -1,15 +1,18 @@
 package com.hive.weatherapi.home.currentweather.view;
 
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.hive.weatherapi.R;
 import com.hive.weatherapi.home.WeatherApplication;
 import com.hive.weatherapi.home.currentweather.model.CurrentWeather;
@@ -18,6 +21,7 @@ import com.hive.weatherapi.home.currentweather.model.CurrentWeatherServiceInterf
 import com.hive.weatherapi.home.currentweather.model.openweathermap.OpenWeatherMapStrategy;
 import com.hive.weatherapi.home.currentweather.presenter.CurrentWeatherPresenter;
 import com.hive.weatherapi.home.helper.LocationHelper;
+import com.hive.weatherapi.home.utils.Constants;
 import com.hive.weatherapi.home.utils.Util;
 
 import butterknife.BindView;
@@ -29,6 +33,7 @@ import butterknife.ButterKnife;
 public class CurrentWeatherFragment extends Fragment implements CurrentWeatherViewInterface, LocationHelper.LocationListener {
 
 
+    private static final String TAG = CurrentWeatherFragment.class.getSimpleName();
     @BindView(R.id.text_view_city) TextView mCityName;
     @BindView(R.id.text_view_weather_text) TextView mWeatherText;
     @BindView(R.id.cloud_icon) TextView mCloudIcon;
@@ -74,6 +79,9 @@ public class CurrentWeatherFragment extends Fragment implements CurrentWeatherVi
 
         final String lastKnownCity = mLocationHelper.getLastKnownCity(getContext());
 
+        //Check weather data in cache first
+         checkForWeatherDatainCache();
+
          if(lastKnownCity != null){
             searchByCity(lastKnownCity);
         }
@@ -87,10 +95,22 @@ public class CurrentWeatherFragment extends Fragment implements CurrentWeatherVi
 
     }
 
+    private void checkForWeatherDatainCache() {
+
+
+        CurrentWeather currentWeather = Util.getCurrentWeatherData(getContext());
+        Log.d(TAG, "Got cached weather " + currentWeather.toString());
+
+        //update the UI with cached data
+        setCurrentWeather(currentWeather);
+    }
+
+
     @Override
     public void setCurrentWeather(CurrentWeather currentWeather) {
         //Since we have the last searched city, save it
         mLocationHelper.saveLastKnownCity(currentWeather.getCityName(), getContext());
+        Util.saveWeatherData(currentWeather, getContext());
 
         hideEmptyView();
 

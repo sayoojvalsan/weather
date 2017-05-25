@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".home.WeatherApplication"
@@ -12,10 +13,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBNwljeCCDsdW2L71dHW0v2foKSTrtTgDY" />
+            android:value="AIzaSyBNwljeCCDsdW2L71dHW0v2foKSTrtTgDY"/>
 
         <activity
             android:name=".home.view.HomeActivity"
@@ -27,6 +27,19 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <receiver android:name=".home.autofetch.receivers.HourReceiver"/>
+        <receiver android:name=".home.autofetch.receivers.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".home.autofetch.services.AutoFetchService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
     </application>
 
 </manifest>
