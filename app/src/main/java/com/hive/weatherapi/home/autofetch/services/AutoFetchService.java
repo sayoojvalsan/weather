@@ -92,6 +92,8 @@ public class AutoFetchService extends Service {
                         .setContentTitle("Weather Update")
                         .setContentText("New Weather report Available");
         Intent resultIntent = new Intent(this, HomeActivity.class);
+        resultIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
         PendingIntent resultPendingIntent =
                 PendingIntent.getActivity(
                         this,

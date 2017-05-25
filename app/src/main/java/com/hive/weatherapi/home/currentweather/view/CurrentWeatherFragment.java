@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hive.weatherapi.R;
@@ -129,6 +130,11 @@ public class CurrentWeatherFragment extends Fragment implements CurrentWeatherVi
     @Override
     public void searchByCity(String city) {
         mCurrentWeatherPresenter.getCurrentWeather(city);
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+        Toast.makeText(getContext(), " Error " + throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
     }
 
 

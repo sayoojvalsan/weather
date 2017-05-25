@@ -54,9 +54,17 @@ public class CurrentWeatherPresenter implements  CurrentWeatherPresenterInterfac
 
     @Override
     public void onComplete(CurrentWeather currentWeather, Throwable throwable) {
+
+
         //Check weak reference for validity
         CurrentWeatherViewInterface currentWeatherViewInterface = mCurrentWeatherViewInterface.get();
+
+
         if(currentWeatherViewInterface != null) {
+            if(throwable != null){
+                currentWeatherViewInterface.onError(throwable);
+                return;
+            }
             currentWeatherViewInterface.setCurrentWeather(currentWeather);
         }
     }

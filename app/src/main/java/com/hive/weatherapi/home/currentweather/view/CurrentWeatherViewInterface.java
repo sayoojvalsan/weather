@@ -10,5 +10,6 @@ public interface CurrentWeatherViewInterface {
 
     void setCurrentWeather(CurrentWeather currentWeather);
     void searchByCity(String city);
+    void onError(Throwable throwable);
 
 }
